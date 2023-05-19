@@ -9,6 +9,4 @@ df = spark.read.csv(dir, header=True, inferSchema=True)
 
 # Hiển thị DataFrame
 df.show()
-
-# Dừng SparkSession
 spark.stop()

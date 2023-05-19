@@ -1,22 +1,15 @@
-import java.net.*;
 import java.io.*;
 
-class Server {
-    public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8080);
-        System.out.println("Server started, waiting for connection...");
+class TransferPy {
 
-        Socket clientSocket = serverSocket.accept();
-        System.out.println("Connection established!");
+    public void option(int o) throws IOException {
+        // set up the command and parameter
+        String[] name = { "Client.py", "Soft_up.py", "Soft_down.py", "KNN.py" };
+        String[] cmd = new String[0];
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            System.out.println("Received message: " + inputLine);
-        }
+        cmd[0] = "py" + " " + name[o];
 
-        in.close();
-        clientSocket.close();
-        serverSocket.close();
+        Runtime rt = Runtime.getRuntime();
+        Process pr = rt.exec(cmd);
     }
 }
